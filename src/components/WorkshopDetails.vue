@@ -40,7 +40,7 @@
                             <div class="col-3">
                                 <p>
                                     <small>
-                                        {{this.workshop.startDate}} - {{this.workshop.endDate}}
+                                        {{this.workshop.startDate | formatDate}} - {{this.workshop.endDate | formatDate}}
                                     </small>
                                 </p>
                                 <p>
@@ -51,12 +51,12 @@
                             </div>
                             <div class="col-3">
                                 <p> 
-                                    <i :class="this.workshop.modes.online ? 'fa-check' : 'fa-times'" />
+                                    <i :class="this.workshop.modes.online ? 'fa fa-check' : 'fa fa-times'" />
                                     <!-- 'fa-check' or 'fa-times' -->
                                     <small>Online</small>
                                 </p>
                                 <p>
-                                    <i :class="this.workshop.modes.inperson ? 'fa-check' : 'fa-times'" />
+                                    <i :class="this.workshop.modes.inPerson ? 'fa fa-check' : 'fa fa-times'" />
                                     <!-- 'fa-check' or 'fa-times' -->
                                     <small>In person</small>
                                 </p>
@@ -70,20 +70,26 @@
             </div>
         </div>
     </div>
+    <WorkshopSessions :workshop-id = "this.workshopId"/>
 </div>
 
 </template>
 
 <script>
 import { fetchWorkshopById } from '@/services/workshops';
+import WorkshopSessions from './WorkshopSessions';
 
 const LOADING = 'LOADING', LOADED = 'LOADED', ERROR_LOADING = 'ERROR_LOADING';
 
 export default {
     name: 'WorkshopDetails',
+    components: {
+        WorkshopSessions,
+    },
     data () {
         return {
-            status: LOADING
+            status: LOADING,
+            workshopId: this.$route.params.id
         }
     },
     mounted () {
@@ -114,5 +120,9 @@ export default {
 .card-img-container {
     min-height: 150px;
     margin: 10px 0;
+}
+
+i {
+    margin-right: 4px !important;
 }
 </style>

@@ -12,7 +12,9 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.7",
+    "vue-toast-notification": "^0.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

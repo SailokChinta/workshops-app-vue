@@ -5,7 +5,7 @@
                 Workshops
                 <div class="float-right">
                     <button class="btn btn-sm btn-primary" @click = "toggleDetails" >
-                        {{ showDetails ? 'Show' : 'Hide' }} Details
+                        {{ showDetails ? 'Hide' : 'Show' }} Details
                     </button>
                 </div>
             </h1>
@@ -53,7 +53,7 @@
                                 <h4 class="card-title">{{workshop.name}}</h4>
                                 <div class="card-text">
                                     <div>
-                                        {{workshop.startDate}} - {{workshop.endDate}}
+                                        {{workshop.startDate | formatDate}} - {{workshop.endDate | formatDate}}
                                     </div>
                                     <div>
                                         <span>{{workshop.time}}</span>
@@ -82,7 +82,7 @@ export default {
     data () {
         return {
             status: LOADING,
-            showDetails: true
+            showDetails: false
         }
     },
     methods: {
@@ -108,10 +108,12 @@ export default {
 .card {
     cursor: pointer;
 }
+
 .card:hover {
     box-shadow: 0px 0px 4px 0px goldenrod;
     background-color: #fcfcfc;
 }
+
 .card-img-container {
     min-height: 150px;
     margin: 10px 0;
